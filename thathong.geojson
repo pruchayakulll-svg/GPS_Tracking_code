@@ -1,0 +1,277 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "วัดศรีรัตนาราม (จูงนาง)" },
+      "geometry": {
+        "coordinates": [100.20548520261013, 16.77835402392283],
+        "type": "Point"
+      },
+      "id": 0
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "โรงพยาบาลส่งเสริมสุขภาพตำบลท่าทอง" },
+      "geometry": {
+        "coordinates": [100.20893857708262, 16.780237048917428],
+        "type": "Point"
+      },
+      "id": 1
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "โลตัส ท่าทอง" },
+      "geometry": {
+        "coordinates": [100.21639918060481, 16.798982495967337],
+        "type": "Point"
+      },
+      "id": 2
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "ศาลปกครองพิษณุโลก" },
+      "geometry": {
+        "coordinates": [100.2043487018434, 16.788093712871742],
+        "type": "Point"
+      },
+      "id": 3
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "สำนักงาน ปศุสัตว์เขต 6" },
+      "geometry": {
+        "coordinates": [100.20394013948959, 16.787132404062007],
+        "type": "Point"
+      },
+      "id": 4
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "สำนักงานสหกรณ์ จังหวัดพิษณุโลก" },
+      "geometry": {
+        "coordinates": [100.20360370999765, 16.78665182122765],
+        "type": "Point"
+      },
+      "id": 5
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "โครงการส่งน้ำและบำรุงรักษาพลายชุมพล" },
+      "geometry": {
+        "coordinates": [100.2056785838833, 16.785862275664797],
+        "type": "Point"
+      },
+      "id": 6
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "ที่ทำการโครงการก่อสร้าง 1 สำนักชลประทานที่ 3" },
+      "geometry": {
+        "coordinates": [100.20588810078436, 16.785453704934767],
+        "type": "Point"
+      },
+      "id": 7
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "ฝ่ายสำรวจทำแผนที่ทางพื้นดินที่ 3" },
+      "geometry": {
+        "coordinates": [100.20559347690914, 16.785249126008665],
+        "type": "Point"
+      },
+      "id": 8
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "สำนักงานจัดรูปที่ดินจังหวัดพิษณุโลก" },
+      "geometry": {
+        "coordinates": [100.20630969716512, 16.785508474717062],
+        "type": "Point"
+      },
+      "id": 9
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "สำนักงานชลประทานที่ 3" },
+      "geometry": {
+        "coordinates": [100.20688662091584, 16.788055875602325],
+        "type": "Point"
+      },
+      "id": 10
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "ฝ่ายสำรวจภูมิประเทศ" },
+      "geometry": {
+        "coordinates": [100.20751642632689, 16.78789087096918],
+        "type": "Point"
+      },
+      "id": 11
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "โครงการส่งน้ำและบำรุงรักษายมน่าน" },
+      "geometry": {
+        "coordinates": [100.20527495107996, 16.788747051140533],
+        "type": "Point"
+      },
+      "id": 12
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "ศูนย์อุทกวิทยาชลประทานภาคเหนือตอนล่าง" },
+      "geometry": {
+        "coordinates": [100.20555243336071, 16.789357396456467],
+        "type": "Point"
+      },
+      "id": 13
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "ส่วนบริหารเครื่องจักรกลที่ 2" },
+      "geometry": {
+        "coordinates": [100.20656277942692, 16.79019196489122],
+        "type": "Point"
+      },
+      "id": 14
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "ฝ่ายรถขุดศูนย์ปฏิบัติการเครื่องจักรกลที่ 2" },
+      "geometry": {
+        "coordinates": [100.20697000166672, 16.791790403220205],
+        "type": "Point"
+      },
+      "id": 15
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "แยกเอ็กซ์เรย์" },
+      "geometry": {
+        "coordinates": [100.21136783716486, 16.795555038377884],
+        "type": "Point"
+      },
+      "id": 16
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "สถานีเรดาร์ตรวจอากาศพิษณุโลก" },
+      "geometry": {
+        "coordinates": [100.2179260585097, 16.775466742215784],
+        "type": "Point"
+      },
+      "id": 17
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "การไฟฟ้าสวนภูมิภาคสถานีพิษณุโลก 3" },
+      "geometry": {
+        "coordinates": [100.21740326755571, 16.786093103638763],
+        "type": "Point"
+      },
+      "id": 18
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "ที่ทำการประปา สำนักงานชลประทานที่ 3" },
+      "geometry": {
+        "coordinates": [100.21075731876522, 16.78451163019558],
+        "type": "Point"
+      },
+      "id": 19
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "ศุนย์วิทยาศาสตร์เพื่อการศึกกษา พิษณุโลก" },
+      "geometry": {
+        "coordinates": [100.19895743261202, 16.803373707445303],
+        "type": "Point"
+      },
+      "id": 20
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาพิษณุโลก" },
+      "geometry": {
+        "coordinates": [100.20082714881181, 16.802905513526255],
+        "type": "Point"
+      },
+      "id": 21
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "สำนักงานเทศบาลตำบลท่าทอง" },
+      "geometry": {
+        "coordinates": [100.2013862269207, 16.802509388314405],
+        "type": "Point"
+      },
+      "id": 22
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "ท้องฟ้าจำลอง พิษณุโลก" },
+      "geometry": {
+        "coordinates": [100.19856165744955, 16.802333872958044],
+        "type": "Point"
+      },
+      "id": 23
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "ศูนย์การศึกษาพิเศษเขตการศึกษา 7" },
+      "geometry": {
+        "coordinates": [100.19983204263809, 16.79808191319836],
+        "type": "Point"
+      },
+      "id": 24
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "ศูนย์สุขภาพเมือง บึงแก่งใหญ่" },
+      "geometry": {
+        "coordinates": [100.19963567300027, 16.79635592355919],
+        "type": "Point"
+      },
+      "id": 25
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "โรงพยาบาลพุทธชินราช สาขาบึงแก่งใหญ่ พิษณุโลก" },
+      "geometry": {
+        "coordinates": [100.1976563546296, 16.79635383894542],
+        "type": "Point"
+      },
+      "id": 26
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "วัดสว่างอารมณ์ พิษณุโลก" },
+      "geometry": {
+        "coordinates": [100.2202180715343, 16.794870297993413],
+        "type": "Point"
+      },
+      "id": 27
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "หน่วยบินตำรวจจังหวัดพิษณุโลก" },
+      "geometry": {
+        "coordinates": [100.22370703597187, 16.77674335599295],
+        "type": "Point"
+      },
+      "id": 28
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "กองกำกับการตำรวจตระเวนชายแดนที่ 31(ค่ายเจ้าพระยาจักรี)"
+      },
+      "geometry": {
+        "coordinates": [100.22447471262092, 16.77819948610842],
+        "type": "Point"
+      },
+      "id": 29
+    }
+  ]
+}

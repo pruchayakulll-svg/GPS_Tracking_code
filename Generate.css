@@ -1,0 +1,106 @@
+.material-icons {
+  vertical-align: middle;
+}
+
+/* Layout */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Kanit", sans-serif;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+/* Sidebar */
+aside {
+  overflow-y: auto;
+}
+
+/* Message Box */
+#messageBox {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#messageBox.active {
+  display: flex;
+}
+
+#messageBox div {
+  background-color: #ffffff;
+  padding: 2rem; /* เพิ่ม padding ให้กล่องใหญ่ขึ้น */
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  max-width: 30rem; /* ความกว้างสูงสุด */
+  width: 80%; /* กว้าง 80% ของหน้าจอ */
+  min-height: 12rem; /* ความสูงขั้นต่ำ */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#messageText {
+  color: #111827;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+
+#messageBox button {
+  margin-top: 1rem;
+  width: 100%;
+  background-color: #6b7280;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+#messageBox button:hover {
+  background-color: #4b5563;
+}
+
+#chartModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999 !important;
+}
+
+#chartModalContent {
+  position: relative;
+  width: 90%;
+  height: 90%;
+  z-index: 10000 !important;
+}
+
+#speedChartLarge {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#summaryBox {
+  position: fixed;
+  top: 15rem; /* หรือ adjust ตาม header */
+  right: 1.5rem;
+  z-index: 1000; /* สูง ๆ ให้แน่ใจ */
+}

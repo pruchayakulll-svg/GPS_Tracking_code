@@ -1,0 +1,316 @@
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ระบบติดตามรถเก็บขยะ</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      crossorigin=""
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      rel="stylesheet"
+    />
+    <script
+      crossorigin=""
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+    <script src="https://unpkg.com/leaflet-rotatedmarker/leaflet.rotatedMarker.js"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="Generate.css" />
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#16a34a",
+              "background-light": "#f3f4f6",
+              "background-dark": "#1f2937",
+              "surface-light": "#ffffff",
+              "surface-dark": "#374151",
+              "text-light-primary": "#111827",
+              "text-light-secondary": "#6b7280",
+              "text-dark-primary": "#f9fafb",
+              "text-dark-secondary": "#d1d5db",
+            },
+            fontFamily: { display: ["Kanit", "sans-serif"] },
+            borderRadius: { DEFAULT: "0.5rem", lg: "0.75rem", xl: "1rem" },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-background-light dark:bg-background-dark font-display">
+    <div class="flex flex-col h-screen">
+      <!-- Header -->
+      <header class="bg-primary text-white shadow-md z-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-20">
+            <div class="flex items-center space-x-4">
+              <span class="material-icons text-4xl">delete</span>
+              <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold">
+                ระบบติดตามรถเก็บขยะ Real-time GPS Tracking system
+              </h1>
+            </div>
+            <div class="flex items-center space-x-4">
+              <a
+                class="text-white hover:text-gray-200 transition-colors"
+                href="#"
+                >ติดต่อเจ้าหน้าที่
+              </a>
+              <a
+                class="text-white hover:text-gray-200 transition-colors"
+                href="#"
+                >เกี่ยวกับเรา</a
+              >
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Layout -->
+      <div class="flex flex-1 overflow-hidden">
+        <!-- Sidebar -->
+        <aside
+          class="w-80 lg:w-96 bg-surface-light dark:bg-surface-dark p-6 overflow-y-auto shadow-lg z-10"
+        >
+          <div class="space-y-6">
+            <!-- ข้อมูลเส้นทางย้อนหลัง -->
+            <div
+              class="p-4 bg-background-light dark:bg-background-dark rounded-lg"
+            >
+              <h2 class="text-lg font-semibold mb-4 flex items-center">
+                <span class="material-icons mr-2 text-primary">history</span>
+                ข้อมูลเส้นทางย้อนหลัง
+              </h2>
+              <div class="space-y-3">
+                <!-- ปฎิทินโหลดข้อมูล-->
+                <div>
+                  <label
+                    for="dateInput"
+                    class="block mb-1 text-sm font-medium text-text-light-secondary dark:text-text-dark-secondary"
+                    >เลือกวันที่</label
+                  >
+                  <input
+                    type="date"
+                    id="dateInput"
+                    class="w-full border border-gray-300 dark:border-gray-600 rounded-md p-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200"
+                  />
+                  <button
+                    onclick="loadData()"
+                    class="mt-2 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 flex items-center justify-center"
+                  >
+                    <span class="material-icons mr-2">cloud_download</span
+                    >โหลดข้อมูล
+                  </button>
+                  <button
+                    onclick="showDailySummary()"
+                    class="mt-2 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 flex items-center justify-center"
+                  >
+                    <span class="material-icons mr-2">summarize</span
+                    >สรุปประจำวัน
+                  </button>
+                </div>
+
+                <!-- เลือกรถขยะ -->
+                <div>
+                  <label
+                    for="vehicleSelect"
+                    class="block mb-1 text-sm font-medium"
+                    >เลือกรถขยะ</label
+                  >
+                  <select
+                    id="vehicleSelect"
+                    onchange="onVehicleChange()"
+                    class="w-full border rounded-md p-2"
+                  >
+                    <option value="all">รถทุกคัน</option>
+                    <option value="truck1">(ทะเบียน กข xxxx)</option>
+                    <option value="truck2">(ทะเบียน คง xxxx)</option>
+                    <option value="truck3">(ทะเบียน จฉ xxxx)</option>
+                  </select>
+                </div>
+
+                <!-- Live Tracking Section -->
+                <div class="space-y-3">
+                  <!-- Live Tracking -->
+                  <button
+                    id="liveTrackingBtn"
+                    onclick="toggleLiveTracking()"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 flex items-center justify-center"
+                  >
+                    <span class="material-icons mr-2">gps_fixed</span>
+                    เริ่มติดตามสด
+                  </button>
+
+                  <!-- Playback -->
+                  <button
+                    id="playPauseBtn"
+                    onclick="togglePlayback()"
+                    class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 flex items-center justify-center"
+                  >
+                    <span class="material-icons mr-2">history</span>
+                    เล่นเส้นทางย้อนหลัง
+                  </button>
+
+                  <div class="flex items-center space-x-2">
+                    <input
+                      type="range"
+                      id="playbackSpeed"
+                      min="1"
+                      max="2"
+                      step="0.5"
+                      value="1"
+                      oninput="updatePlaybackSpeed(this.value)"
+                      class="flex-1 rounded-md"
+                    />
+                    <span id="speedValue" class="font-bold text-purple-700"
+                      >1x</span
+                    >
+                  </div>
+
+                  <!-- Clear Map -->
+                  <button
+                    onclick="clearMap()"
+                    class="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md transition duration-300 flex items-center justify-center"
+                  >
+                    <span class="material-icons mr-2">layers_clear</span>
+                    เคลียร์
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- ฟังก์ชันเพิ่มเติม -->
+            <div
+              class="p-4 bg-background-light dark:bg-background-dark rounded-lg"
+            >
+              <h2
+                class="text-lg font-semibold text-text-light-primary dark:text-text-dark-primary mb-4 flex items-center"
+              >
+                <span class="material-icons mr-2 text-primary"> analytics</span
+                >ฟังก์ชันเพิ่มเติม
+              </h2>
+              <div class="space-y-3">
+                <button
+                  onclick="window.location.href='Dashboard.html'; showMessageBox('ไปยัง HEATMAP');"
+                  class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md transition duration-300 flex items-center justify-center"
+                >
+                  <span class="material-icons mr-2">heatmap</span>HEATMAP
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- กราฟเล็กด้านข้าง -->
+          <div
+            class="p-4 bg-background-light dark:bg-background-dark rounded-lg mt-4 relative"
+          >
+            <h2 class="text-lg font-semibold mb-4 flex items-center">
+              <span class="material-icons mr-2 text-primary">show_chart</span>
+              กราฟความเร็ว (km/hr)
+            </h2>
+
+            <!-- ปุ่มขยาย -->
+            <button
+              onclick="openChartModal()"
+              class="absolute top-2 right-2 text-gray-600 hover:text-blue-600"
+            >
+              <span class="material-icons">fullscreen</span>
+            </button>
+
+            <!-- mini chart -->
+            <div class="h-60">
+              <canvas id="speedChart"></canvas>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Map -->
+        <main class="flex-1 relative">
+          <div id="map" class="w-full h-full"></div>
+          <!-- Summary -->
+          <div
+            id="summaryBox"
+            class="hidden fixed top-24 right-6 bg-white dark:bg-gray-800 p-4 rounded-md shadow-lg z-50 max-w-sm"
+          ></div>
+
+          <!-- Summary -->
+        </main>
+      </div>
+    </div>
+
+    <!-- Popup Modal -->
+    <div
+      id="chartModal"
+      class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+    >
+      <div
+        id="chartModalContent"
+        class="bg-white rounded-lg shadow-lg w-11/12 h-5/6 relative p-4"
+        style="min-width: 300px; min-height: 200px"
+      >
+        <!-- Header สำหรับลาก -->
+        <div
+          id="chartModalHeader"
+          class="cursor-move bg-gray-100 dark:bg-gray-700 p-2 rounded-t-lg flex justify-between items-center"
+        >
+          <span class="font-bold text-gray-700 dark:text-gray-200"
+            >กราฟความเร็ว (FULLSCREEN)</span
+          >
+          <button
+            onclick="closeChartModal()"
+            class="text-red-500 text-2xl font-bold"
+          >
+            &times;
+          </button>
+        </div>
+
+        <!-- กราฟใหญ่ -->
+        <canvas id="speedChartLarge" class="w-full h-full mt-2"></canvas>
+
+        <!-- Handle สำหรับปรับขนาด -->
+        <div
+          id="resizeHandle"
+          class="absolute bottom-0 right-0 w-6 h-6 cursor-se-resize bg-gray-300 dark:bg-gray-600"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Message Box -->
+    <div
+      id="messageBox"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden"
+      style="z-index: 9999"
+    >
+      <div
+        class="bg-white dark:bg-gray-800 p-4 rounded-md shadow-lg max-w-sm w-full"
+      >
+        <p id="messageText" class="text-gray-800 dark:text-gray-100"></p>
+        <button
+          onclick="hideMessageBox()"
+          class="mt-2 w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md"
+        >
+          ปิด
+        </button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      // ฟังก์ชัน Message Box function showMessageBox(message) { const box = document.getElementById("messageBox"); const text = document.getElementById("messageText"); text.textContent = message; box.classList.remove("hidden"); } function hideMessageBox() { document.getElementById("messageBox").classList.add("hidden"); }
+    </script>
+  </body>
+</html>

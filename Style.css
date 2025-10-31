@@ -1,0 +1,403 @@
+/* General Body Styles */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f6; /* Light background */
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure body takes full viewport height */
+}
+
+/* Header Content Layout ปรับเป็นชิดซ้าย */
+header .header-content {
+  display: flex;
+  flex-direction: column; /* โลโก้อยู่บน หัวข้ออยู่ล่าง */
+  align-items: flex-start; /* ชิดซ้าย */
+  text-align: left; /* ข้อความชิดซ้าย */
+  padding: 10px 20px; /* ระยะห่างขอบซ้าย */
+  gap: 10px;
+}
+
+/* แถวหลักของ header */
+.header-row {
+  display: flex;
+  align-items: center; /* จัดให้อยู่กลางแนวตั้ง */
+  gap: 30px; /* ระยะห่างระหว่างโลโก้และหัวข้อ */
+}
+
+/* โลโก้เรียงแนวนอน */
+.logo-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* โลโก้แต่ละบล็อก */
+.logo-block {
+  display: flex;
+  flex-direction: column; /* รูปอยู่บน ข้อความอยู่ล่าง */
+  align-items: center;
+}
+
+.logo-block img {
+  height: 80px;
+  width: auto;
+  margin-bottom: 5px;
+}
+
+.logo-block p {
+  font-size: 0.9em;
+  color: #f5cf3a;
+  margin: 0;
+}
+
+/* หัวข้อและข้อความรองด้านขวา */
+.header-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.header-text h2 {
+  font-size: 1.7em;
+  color: #f5cf3a;
+  margin: 0 0 5px 0;
+}
+
+.header-text p {
+  font-size: 1em;
+  color: #f5cf3a;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Header Logo Styling */
+header .logo {
+  height: 120px;
+  width: auto; /* Changed from '100' to 'auto' for correct aspect ratio */
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+/* Header Main Styling */
+header {
+  background-color: #7935e6; /* ม่วงเข้ม */
+  color: #f5cf3a; /* เหลืองนวล */
+  padding: 1.2rem 1.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border-bottom: 4px solid #3f2e5a; /* ม่วงเข้มกว่าขอบ */
+  user-select: none;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+header:hover {
+  background-color: #8945ee;
+  cursor: default;
+}
+
+/* Main Layout Container */
+#container {
+  display: flex;
+  flex-grow: 1; /* Allows the container to take up available space */
+  height: 90vh; /* Set height for the main content area */
+  background: #e9e2f1; /* สีม่วงอ่อนนวลๆ */
+  box-shadow: inset 0 0 8px #c6b8e3;
+  border-radius: 8px;
+  margin: 1rem;
+  overflow: hidden;
+  gap: 0; /* ปิดช่องว่างระหว่าง flex items */
+}
+
+/* Controls Sidebar Styling */
+#controls {
+  width: 280px;
+  background-color: #7935e6; /* ม่วงกลาง */
+  padding: 30px;
+  box-sizing: border-box;
+  color: #fff5b1; /* เหลืองอ่อน */
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  box-shadow: 3px 0 12px rgba(80, 60, 140, 0.5);
+  user-select: none;
+  flex-shrink: 0; /* Prevent shrinking */
+  margin: 0;
+  position: relative;
+  overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+#controls label {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+/* General input and button styles within controls */
+#controls input,
+#controls button,
+#controls select {
+  width: 100%;
+  display: block;
+  font-size: 1rem;
+  color: #fff5b1;
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Input Date Specific Styling */
+#controls input[type="date"],
+#controls select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  box-shadow: inset 1px 1px 5px rgba(255 221 87 / 0.25);
+  outline-offset: 2px;
+  outline-color: #f5cf3a;
+  background-color: #e9e2f1;
+  color: #4b3678; /* Darker text for input field */
+  transition: box-shadow 0.3s ease;
+  -webkit-appearance: none; /* Remove default select arrow */
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%234b3678%22%20d%3D%22M287%2C197.3L159.2%2C69.5c-3.2-3.2-8.3-3.2-11.5%2C0L5.4%2C197.3c-3.2%2C3.2-3.2%2C8.3%2C0%2C11.5l11.5%2C11.5c3.2%2C3.2%2C8.3%2C3.2%2C11.5%2C0l125.1-125.1l125.1%2C125.1c3.2%2C3.2%2C8.3%2C3.2%2C11.5%2C0l11.5-11.5C290.2%2C205.6%2C290.2%2C200.5%2C287%2C197.3z%22%2F%3E%3C%2Fsvg%3E"); /* Custom arrow */
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%;
+  background-size: 12px auto;
+}
+
+#controls input[type="date"]:focus,
+#controls select:focus {
+  box-shadow: 0 0 8px 3px #ffdd57;
+  outline-color: #ffdd57;
+}
+
+/* Button Styling */
+#controls button {
+  background-color: #ffdd57; /* เหลือง */
+  color: #4b3678; /* ม่วงเข้ม */
+  border: none;
+  margin-bottom: 10px;
+  padding: 12px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: 0 3px 8px rgba(255 221 87 / 0.6);
+  user-select: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+#controls button:last-child {
+  margin-bottom: 0;
+}
+
+#controls button:hover {
+  background-color: #f0c90f; /* เหลืองเข้มขึ้น */
+  box-shadow: 0 6px 20px rgba(240 201 15 / 0.8);
+  transform: translateY(-2px);
+}
+
+/* Control Group Styling แก้ไขระยะห่างใต้โหลดข้อมูล */
+.control-group {
+  border-bottom: none;
+  padding-bottom: none;
+  margin-bottom: none;
+}
+
+.control-group:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.control-group h3 {
+  color: #f5cf3a;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.3em;
+  border-bottom: 3px solid #f5cf3a;
+  padding-bottom: 5px;
+}
+
+/* Info Panel Styling */
+#infoPanel {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
+  color: #fff5b1;
+}
+
+#infoPanel p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+
+#infoPanel strong {
+  color: #ffdd57;
+}
+
+/* Route Playback Controls Styling */
+.playback-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.playback-controls button {
+  width: auto;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  margin-bottom: 0; /* Override general button margin */
+  flex-shrink: 0;
+}
+
+.playback-controls input[type="range"] {
+  flex-grow: 1;
+  -webkit-appearance: none;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  outline: none;
+  transition: opacity 0.2s;
+}
+
+.playback-controls input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffdd57;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.playback-controls input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffdd57;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Map Styling */
+#map {
+  flex: 1;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-shadow: inset 0 0 10px #9c88cc; /* เงาโทนม่วง */
+  background-color: #f8f6fb;
+  margin: 0;
+  padding: 0;
+  min-width: 0; /* Prevent map from overflowing */
+}
+
+#messageBox {
+  display: none; /* เริ่มต้นซ่อน */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Custom Message Box Styling */
+.message-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.message-box-content {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  color: #333;
+}
+
+.message-box-content p {
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.message-box-content button {
+  background-color: #7935e6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.2s ease;
+}
+
+.message-box-content button:hover {
+  background-color: #5a27b3;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  #container {
+    flex-direction: column; /* Stack sidebar and map on smaller screens */
+    height: auto; /* Allow height to adjust */
+    margin: 0.5rem;
+  }
+
+  #controls {
+    width: auto; /* Full width for sidebar */
+    border-radius: 8px 8px 0 0; /* Adjust border radius for top */
+    box-shadow: 0 3px 12px rgba(80, 60, 140, 0.5);
+    padding: 20px;
+  }
+
+  #map {
+    height: 50vh; /* Give map a fixed height on mobile */
+    border-radius: 0 0 8px 8px; /* Adjust border radius for bottom */
+    box-shadow: inset 0 0 10px #9c88cc;
+  }
+
+  header .header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+  }
+
+  header h2 {
+    font-size: 1.5em;
+  }
+
+  /* ปรับขนาดโลโก้ */
+  header .logo {
+    height: 80px;
+    width: auto;
+  }
+}
